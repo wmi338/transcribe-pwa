@@ -1,4 +1,10 @@
-const CACHE_NAME = 'transcribe-pwa-v0.5.3'
+const CACHE_NAME = 'transcribe-pwa-v0.5.4'
+const AI_RUNTIME_CACHE = 'transcribe-pwa-ai-runtime-v1'
+const AI_RUNTIME_BASE = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.3/dist/'
+const AI_RUNTIME_FILES = new Set([
+  `${AI_RUNTIME_BASE}ort-wasm-simd-threaded.asyncify.mjs`,
+  `${AI_RUNTIME_BASE}ort-wasm-simd-threaded.asyncify.wasm`,
+])
 const APP_SHELL = ['./', './manifest.webmanifest']
 
 self.addEventListener('install', (event) => {
@@ -9,7 +15,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)),
+      keys.filter((key) => key !== CACHE_NAME && key !== AI_RUNTIME_CACHE).map((key) => caches.delete(key)),
     )),
   )
   self.clients.claim()
@@ -20,6 +26,15 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return
 
   const url = new URL(request.url)
+  if (AI_RUNTIME_FILES.has(url.href)) {
+    event.respondWith(
+      caches.open(AI_RUNTIME_CACHE).then((cache) => cache.match(request).then((cached) => cached ?? fetch(request).then((response) => {
+        if (response.ok) cache.put(request, response.clone())
+        return response
+      }))),
+    )
+    return
+  }
   if (url.origin !== self.location.origin) return
 
   if (request.mode === 'navigate') {
