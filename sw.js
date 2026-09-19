@@ -1,5 +1,5 @@
-const CACHE_NAME = 'transcribe-pwa-v0.5.4'
-const AI_RUNTIME_CACHE = 'transcribe-pwa-ai-runtime-v1'
+const CACHE_NAME = 'transcribe-pwa-v0.5.5'
+const AI_RUNTIME_CACHE = 'transcribe-pwa-ai-assets-v2'
 const AI_RUNTIME_BASE = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.3/dist/'
 const AI_RUNTIME_FILES = new Set([
   `${AI_RUNTIME_BASE}ort-wasm-simd-threaded.asyncify.mjs`,
