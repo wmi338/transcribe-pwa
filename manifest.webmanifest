@@ -1,0 +1,27 @@
+{
+  "name": "Transcribe Mobile Practice",
+  "short_name": "Transcribe",
+  "description": "本機音檔練習、變速與 A–B 循環播放器",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0d1115",
+  "theme_color": "#0d1115",
+  "categories": ["music", "education", "utilities"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
