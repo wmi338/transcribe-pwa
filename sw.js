@@ -1,4 +1,4 @@
-const CACHE_NAME = 'transcribe-pwa-v0.5.0'
+const CACHE_NAME = 'transcribe-pwa-v0.5.1'
 const APP_SHELL = ['./', './manifest.webmanifest']
 
 self.addEventListener('install', (event) => {
