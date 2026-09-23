@@ -1,4 +1,4 @@
-const CACHE_NAME = 'transcribe-pwa-v0.5.15'
+const CACHE_NAME = 'transcribe-pwa-v0.5.16'
 const AI_RUNTIME_CACHE = 'transcribe-pwa-ai-assets-v4'
 const AI_RUNTIME_BASE = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.24.3/dist/'
 const AI_RUNTIME_FILES = new Set([
